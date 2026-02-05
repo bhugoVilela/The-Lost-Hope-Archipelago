@@ -1,0 +1,150 @@
+/* ===================================================================
+   A4 Two-Column Layout for D&D Manual
+   =================================================================== */
+
+/* Section A: Page Setup (@page rules)
+   ------------------------------------------------------------------- */
+
+@page {
+  size: A4;
+  /* margin: 2cm 1.5cm; */
+  padding: 8mm;
+}
+
+@page:first {
+  /* size: A4; */
+  /* margin: 2cm 1.5cm; */
+  padding-top: 0px;
+  margin-top: 0px;
+  background-color: black;
+}
+
+
+/* @page :first { */
+/*   margin-top: 3cm; */
+/* } */
+/**/
+/* @page :left { */
+/*   margin-left: 2cm; */
+/*   margin-right: 1.5cm; */
+/* } */
+/**/
+/* @page :right { */
+/*   margin-left: 1.5cm; */
+/*   margin-right: 2cm; */
+/* } */
+
+/* Section B: Two-Column Layout (Print Mode)
+   ------------------------------------------------------------------- */
+
+@media print {
+  body {
+    column-count: 2;
+    column-gap: 1cm;
+    /* column-rule: 1px solid #d4c4a8; */
+    column-fill: auto;
+    font-size: 10pt;
+    line-height: 1.5;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  h1 {
+    text-align: left;
+    font-size: 18pt;
+    /* column-span: all; */
+  }
+
+  h2 {
+    font-size: 14pt;
+  }
+
+  h3 {
+    font-size: 12pt;
+  }
+
+  h4 {
+    font-size: 11pt;
+  }
+}
+
+/* Section C: Page Break Controls
+   ------------------------------------------------------------------- */
+
+/* Prevent headings from being orphaned at bottom of column/page */
+h1, h2, h3, h4, h5, h6 {
+  break-after: avoid;
+  page-break-after: avoid;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  orphans: 2;
+  widows: 2;
+}
+
+/* Keep lists, blockquotes, and boxes together */
+ul, ol, li, blockquote, .box, img, figure {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* Control paragraph widows/orphans */
+p {
+  orphans: 3;
+  widows: 3;
+}
+
+/* Section D: Screen Preview Mode
+   ------------------------------------------------------------------- */
+
+@media screen {
+  html {
+    background: #888;
+  }
+
+  body {
+    max-width: 210mm;
+    min-height: 297mm;
+    margin: 20px auto;
+    padding: 2cm 1.5cm;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+}
+
+/* Section E: Print Optimizations
+   ------------------------------------------------------------------- */
+
+@media print {
+  /* Ensure backgrounds print */
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Remove shadows in print */
+  .box {
+    box-shadow: none;
+  }
+
+  /* Make links readable */
+  a {
+    color: inherit;
+    text-decoration: underline;
+  }
+}
+
+blockquote {
+    background-color: #F0F7E4;
+    margin-inline: 0px;
+    padding: 10px;
+    border-left: 5px solid hsl(77 43% 36% / 1);
+    text-align: justify;
+}
+
+figure { 
+  overflow: hidden;
+  margin-inline: 0px;
+
+  img {
+    max-width: 100%;
+  }
+}
